@@ -3,6 +3,8 @@ sudo: "required"
 services:
   - "docker"
 
+language: bash
+
 env:
   - DOCKER_REPO_SLUG=goeroeku/php-fpm-alpine
   - DOCKER_REPO_TAG=7.3.1
