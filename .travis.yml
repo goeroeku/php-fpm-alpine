@@ -1,0 +1,16 @@
+sudo: "required"
+
+services:
+  - "docker"
+
+env:
+  - DOCKER_REPO_SLUG=goeroeku/php-fpm-alpine
+  - DOCKER_REPO_TAG=7.3.1
+
+before_install:
+  - "./bin/build $DOCKER_REPO_TAG prod"
+
+after_success:
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - if [[ $TRAVIS_BRANCH = master ]]; then docker push $DOCKER_REPO_SLUG:latest; else true; fi
+  - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then docker push $DOCKER_REPO_SLUG:$TRAVIS_TAG; else true ; fi

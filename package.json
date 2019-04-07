@@ -1,0 +1,25 @@
+{
+  "name": "php-fpm-alpine",
+  "version": "1.0.1",
+  "description": "PHP FPM base on Alpine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goeroeku/php-fpm-alpine.git"
+  },
+  "keywords": [
+    "Alpine",
+    "PHP",
+    "FPM",
+    "mysqli",
+    "pdo"
+  ],
+  "author": "Goeroeku <goeroeku@gmail.com>s",
+  "license": "MIT",
+  "dependencies": {
+    "dockerfilelint": "^1.5.0"
+  }
+}
