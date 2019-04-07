@@ -21,7 +21,7 @@ PHP FPM with mysqli and pdo base on Alpine
 ## Building
 
 1. `./bin/dockerlint`
-2. `./bin/build docker build x.y.z [dev,prod]`
+2. `./bin/build {TAG} [dev,prod]`
 
 ## Helper scripts
 
