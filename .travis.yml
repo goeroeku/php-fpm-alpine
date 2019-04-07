@@ -1,18 +1,27 @@
+language: generic
+
 sudo: "required"
 
 services:
   - "docker"
 
-language: bash
-
 env:
-  - DOCKER_REPO_SLUG=goeroeku/php-fpm-alpine
-  - DOCKER_REPO_TAG=7.3.1
+  global:
+    - DOCKER_REPO_SLUG=goeroeku/php-fpm-alpine
+    - DOCKER_REPO_TAG=7.3.1
 
 script:
   - docker build --no-cache --compress --tag=$DOCKER_REPO_SLUG:$DOCKER_REPO_TAG .
 
-after_success:
+after_script:
+  - docker images
+
+before_deploy:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - if [[ $TRAVIS_BRANCH = master ]]; then docker push $DOCKER_REPO_SLUG:latest; else true; fi
-  - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then docker push $DOCKER_REPO_SLUG:$TRAVIS_TAG; else true ; fi
+  - docker tag "$DOCKER_REPO_SLUG" "${DOCKER_REPO_SLUG}:${DOCKER_REPO_TAG}"
+
+deploy:
+  provider: script
+  script: docker push "${DOCKER_REPO_SLUG}:latest" && docker push "${DOCKER_REPO_SLUG}:${DOCKER_REPO_TAG}"
+  on:
+    branch: master
