@@ -1,6 +1,6 @@
-# PHP FPM ALPINE
+# PHP FPM ALPINE ![Build Status](https://travis-ci.org/goeroeku/php-fpm-alpine.svg?branch=master)
 
-Docker image
+Docker image 
 
 ## php-fpm-alpine
 
