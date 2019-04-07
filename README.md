@@ -2,6 +2,12 @@
 
 Docker image 
 
+## How to Use
+
+```text
+docker pull goeroeku/php-fpm-alpine:latest
+```
+
 ## php-fpm-alpine
 
 PHP FPM with mysqli and pdo base on Alpine
@@ -18,7 +24,7 @@ PHP FPM with mysqli and pdo base on Alpine
 - mysqli
 - pdo_mysql
 
-## Building
+## Manual Building
 
 1. `./bin/dockerlint`
 2. `./bin/build {TAG} [dev,prod]`
