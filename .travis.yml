@@ -8,7 +8,7 @@ env:
   - DOCKER_REPO_TAG=7.3.1
 
 before_install:
-  - "./bin/build $DOCKER_REPO_TAG prod"
+  - docker build --no-cache --compress --tag=goeroeku/php-fpm-alpine:${DOCKER_REPO_TAG} .
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
